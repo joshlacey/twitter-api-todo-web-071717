@@ -17,7 +17,7 @@ describe TwitterApi do
 
   describe "#find_user_for" do
     it "given a username, it returns the user object" do
-      VCR.use_cassette('twitter/find_user_for') do
+      VCR.use_cassette('twitter/find_user_for', :record => :once) do
         user = client.find_user_for("sm_debenedetto")
         expect(user.class).to eq(Twitter::User)
         expect(user.username).to eq("sm_debenedetto")
@@ -48,4 +48,3 @@ describe TwitterApi do
     end
   end
 end
-
